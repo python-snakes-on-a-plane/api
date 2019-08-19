@@ -5,6 +5,8 @@ from django.db import models
 class Flight(models.Model):
     name = models.CharField(max_length=256)
 
+    def __str__(self):
+        return self.name
 
 
 class Passenger(models.Model):
@@ -13,7 +15,7 @@ class Passenger(models.Model):
     def __str__(self):
         return self.name
 
-class Seats(models.Model):
+class Seat(models.Model):
     seatnumber = models.CharField(max_length=3)
     passenger = models.ForeignKey('Passenger', default=1, on_delete=models.CASCADE)
 
