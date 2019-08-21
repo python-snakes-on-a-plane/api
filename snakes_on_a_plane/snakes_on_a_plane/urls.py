@@ -22,4 +22,7 @@ from django.urls import path
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('flights/', include('flights.urls')),
+    path('passengers/', include('flights.urls_passengers')),
+    path('seats/', include('flights.urls_seats')),
+
 ]

@@ -9,17 +9,18 @@ class Flight(models.Model):
     def __str__(self):
         return self.name
 
-class Passenger(models.Model):
-    name = models.CharField(max_length=256)
-    
-    def __str__(self):
-        return self.name
-
 class Seat(models.Model):
     seatnumber = models.CharField(max_length=3)
     flight = models.ForeignKey('Flight', default=1, on_delete=models.CASCADE)
-    passenger = models.OneToOneField('Passenger', default=1, on_delete=models.CASCADE)
     
-
     def __str__(self):
         return self.seatnumber
+
+class Passenger(models.Model):
+    name = models.CharField(max_length=256)
+    seat = models.OneToOneField('Seat', default=1, on_delete=models.CASCADE, related_name='passenger')
+    flight = models.ForeignKey('Flight', default=1, on_delete=models.CASCADE, related_name='flight')
+
+
+    def __str__(self):
+        return self.name, self.seat, self.flight
