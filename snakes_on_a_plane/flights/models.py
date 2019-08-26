@@ -26,15 +26,15 @@ class Passenger(models.Model):
         return self.name, self.seat, self.flight
 
 class Player(Passenger):
-    user_name = models.Charfield(max_length=256)
+    username = models.CharField(max_length=256)
 
     def __str__(self):
-        return self.user_name
+        return self.username
 
 class Cell(models.Model):
-    cell_type = models.Charfield(max_length=256)
-    x_pos = models.Charfield(max_length=10)
-    y_pos = models.Charfield(max_length=10)
+    cell_type = models.CharField(max_length=256)
+    x_pos = models.CharField(max_length=10)
+    y_pos = models.CharField(max_length=10)
 
     def __str__(self):
         return self.cell_type, self.x_pos, self.y_pos
